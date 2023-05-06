@@ -43,7 +43,9 @@ def prepare_model_tokenizer(model_name:str):
 
     tokenizer = AutoTokenizer.from_pretrained(model_name)
     if tokenizer.pad_token is None:
-        tokenizer.pad_token = tokenizer.unk_token_id
+        tokenizer.pad_token_id = (0)
+        # tokenizer.pad_token_id = (tokenizer.unk_token_id)
+        # tokenizer.pad_token = tokenizer.unk_token
     tokenizer.padding_side = "left"
 
     model_cls = AutoModelForCausalLM if is_causal else AutoModelForSeq2SeqLM
@@ -86,7 +88,6 @@ def train(
     # wandb params
     use_wandb: bool = True,
     wandb_project: str = "japanese-conversational-ai",
-    wandb_run_name: str = "",
     wandb_log_model: str = "false",  # options: false | true
 ):
     gradient_accumulation_steps = batch_size // micro_batch_size
@@ -191,8 +192,8 @@ if __name__ in "__main__":
 
     model_names = [
         "yahma/llama-7b-hf",
-        "togethercomputer/RedPajama-INCITE-Base-7B-v0.1",
         "EleutherAI/pythia-6.9b-deduped",
+        "togethercomputer/RedPajama-INCITE-Base-7B-v0.1",
         "abeja/gpt-neox-japanese-2.7b",
         # "bigscience/mt0-xl",
 
@@ -205,4 +206,9 @@ if __name__ in "__main__":
 
     for data_path in data_paths:
         for model_name in model_names:
-            train(model_name=model_name, data_path=data_path)
+            train(
+                model_name=model_name, 
+                data_path=data_path,
+                # batch_size=8,
+                # num_epochs=0.001
+                )
