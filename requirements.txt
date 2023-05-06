@@ -1,0 +1,8 @@
+torch>=2.0.0
+transformers
+peft==0.2.0
+bitsandbytes==0.37.2
+einops
+sentencepiece
+datasets
+wandb
