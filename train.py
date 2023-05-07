@@ -2,8 +2,7 @@ import json
 import os
 from typing import List, Union
 import datetime
-now = datetime.datetime.now()
-timestamp = now.strftime("%Y%m%d_%H%M%S")
+
 
 import torch
 from transformers import (
@@ -78,18 +77,22 @@ def train(
     # training hyperparams
     batch_size: int = 128,
     micro_batch_size: int = 4,
-    num_epochs: int = 3,
+    num_epochs: float = 3.0,
     learning_rate: float = 3e-4,
     cutoff_len: int = 512,
     val_set_size: int = 2000,
+    eval_steps: int = 200,
     # llm hyperparams
     add_eos_token: bool = False,
     group_by_length: bool = True,  # faster, but produces an odd training loss curve
     # wandb params
     use_wandb: bool = True,
-    wandb_project: str = "japanese-conversational-ai",
+    wandb_project: str = "japanese-lora-llm",
     wandb_log_model: str = "false",  # options: false | true
 ):
+    now = datetime.datetime.now()
+    timestamp = now.strftime("%Y%m%d_%H%M%S")
+
     gradient_accumulation_steps = batch_size // micro_batch_size
 
     prompter = AlpacaPromptTemplate()
@@ -157,8 +160,8 @@ def train(
             logging_steps=1,
             optim="adamw_torch",
             evaluation_strategy="steps",
-            save_strategy="steps",
-            eval_steps=200,
+            save_strategy="no",
+            eval_steps=eval_steps,
             output_dir=output_dir,
             group_by_length=group_by_length,
             report_to="wandb" if use_wandb else None,
@@ -181,7 +184,21 @@ def train(
 
 
 if __name__ in "__main__":
-    # data_path = "datasets/alpaca_cleaned_ja.json"
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--data_path", default="datasets/alpaca_cleaned_ja.json")
+    parser.add_argument("--model_name", required=True)
+    parser.add_argument("--batch_size", type=int)
+    parser.add_argument("--num_epochs", type=float)
+    parser.add_argument("--eval_steps", type=int)
+    args = parser.parse_args()
+
+    train(
+        model_name=args.model_name, 
+        # batch_size=args.batch_size, 
+        # num_epochs=args.num_epochs,
+        # eval_steps=args.eval_steps
+        )
 
     # model_name = "yahma/llama-7b-hf"
     # model_name = "mosaicml/mpt-7b"
@@ -190,25 +207,25 @@ if __name__ in "__main__":
     # model_name = "togethercomputer/RedPajama-INCITE-Base-7B-v0.1"
     # model_name = "abeja/gpt-neox-japanese-2.7b"
 
-    model_names = [
-        "yahma/llama-7b-hf",
-        "EleutherAI/pythia-6.9b-deduped",
-        "togethercomputer/RedPajama-INCITE-Base-7B-v0.1",
-        "abeja/gpt-neox-japanese-2.7b",
+    # model_names = [
+        # "yahma/llama-7b-hf",
+        # "EleutherAI/pythia-6.9b-deduped",
+        # "togethercomputer/RedPajama-INCITE-Base-7B-v0.1",
+        # "abeja/gpt-neox-japanese-2.7b",
         # "bigscience/mt0-xl",
 
         # "mosaicml/mpt-7b",
-    ]
-    data_paths = [
-        "datasets/alpaca_cleaned_ja.json",
+    # ]
+    # data_paths = [
+    #     "datasets/alpaca_cleaned_ja.json",
         # "datasets/databricks-dolly-15k-ja-deepl.json"
-    ]
+    # ]
 
-    for data_path in data_paths:
-        for model_name in model_names:
-            train(
-                model_name=model_name, 
-                data_path=data_path,
-                # batch_size=8,
-                # num_epochs=0.001
-                )
+    # for data_path in data_paths:
+    #     for model_name in model_names:
+    #         train(
+    #             model_name=model_name, 
+    #             data_path=data_path,
+    #             # batch_size=8,
+    #             # num_epochs=0.001
+    #             )
