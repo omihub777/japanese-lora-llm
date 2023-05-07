@@ -16,7 +16,7 @@ make setup
 * :construction: : WIP
 * :white_check_mark: : Evaluation is done
 
-|    |No Tuning|Alpaca-ja|Dolly-ja|Guanaco-ja|
+|    |No Tuning|Alpaca-ja|Dolly-ja|Guanaco|
 |:--:|:--:|:--:|:--:|:--:|
 |LLaMA-7B|:construction: |:white_check_mark: |:white_check_mark: | |
 |RedPajama-INCITE-7B|:construction: |:white_check_mark: | :white_check_mark: | |

@@ -2,10 +2,18 @@ import json
 from typing import Union
 
 class AlpacaPromptTemplate:
-    def __init__(self):
+    def __init__(self, is_multling:bool=False):
+        """
+        Args:
+            is_multling: True if a dataset consists of multiple languages.
+        """
         file_name = "templates/alpaca_template.json"
         with open(file_name) as fp:
             self.template = json.load(fp)
+        if is_multling:
+            self.template["prompt_input"] = self.template["prompt_input"].replace(" You MUST speak in Japanese.", "")
+            self.template["prompt_no_input"] = self.template["prompt_no_input"].replace(" You MUST speak in Japanese.", "")
+        
 
     def generate_prompt(
         self,

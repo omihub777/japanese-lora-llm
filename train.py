@@ -95,7 +95,8 @@ def train(
 
     gradient_accumulation_steps = batch_size // micro_batch_size
 
-    prompter = AlpacaPromptTemplate()
+    is_multling = "guanaco" in data_path
+    prompter = AlpacaPromptTemplate(is_multling=is_multling)
     wandb_run_name=f'{model_name.replace("/","_").replace("-","_")}_{data_path.split("/")[-1].split(".")[0].replace("-","_")}'
 
     # Check if parameter passed or if set within environ
