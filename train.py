@@ -192,13 +192,16 @@ if __name__ in "__main__":
     parser.add_argument("--batch_size", type=int)
     parser.add_argument("--num_epochs", type=float)
     parser.add_argument("--eval_steps", type=int)
+    parser.add_argument("--val_set_size", type=int)
+
     args = parser.parse_args()
 
     train(
         model_name=args.model_name, 
         # batch_size=args.batch_size, 
         # num_epochs=args.num_epochs,
-        # eval_steps=args.eval_steps
+        eval_steps=args.eval_steps,
+        val_set_size=args.val_set_size,
         )
 
     # model_name = "yahma/llama-7b-hf"

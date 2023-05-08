@@ -65,7 +65,7 @@ class QualitativeTester:
     def test(self, gen_hp:Dict[str, Any])->List[Dict]:
         responses = []
         for testcase in tqdm.tqdm(self.testcases):
-            test_prompt = self.prompt.format(instruction=testcase["instruction"])
+            test_prompt = self.prompt.generate_prompt(instruction=testcase["instruction"])
             response = self.generate(test_prompt, gen_hp=gen_hp)
             responses.append(
                 {
@@ -131,6 +131,10 @@ if __name__=="__main__":
 
     if args.ds_name=="alpaca":
         model_names = [ # alpaca
+            "weights/abeja_gpt_neox_japanese_2.7b_alpaca_cleaned_ja_lora_int8_20230507_183231",
+            "weights/EleutherAI_pythia_6.9b_deduped_alpaca_cleaned_ja_lora_int8_20230507_120552",
+            "weights/togethercomputer_RedPajama_INCITE_Base_7B_v0.1_alpaca_cleaned_ja_lora_int8_20230507_222908",
+            "weights/yahma_llama_7b_hf_alpaca_cleaned_ja_lora_int8_20230508_050313"
         ]
     elif args.ds_name=="dolly":
         model_names = [ # dolly
