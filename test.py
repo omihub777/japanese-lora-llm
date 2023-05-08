@@ -138,9 +138,17 @@ if __name__=="__main__":
         ]
     elif args.ds_name=="dolly":
         model_names = [ # dolly
+            "weights/abeja_gpt_neox_japanese_2.7b_databricks_dolly_15k_ja_deepl_lora_int8_20230508_143708",
+            "weights/EleutherAI_pythia_6.9b_deduped_databricks_dolly_15k_ja_deepl_lora_int8_20230508_120504",
+            "weights/togethercomputer_RedPajama_INCITE_Base_7B_v0.1_databricks_dolly_15k_ja_deepl_lora_int8_20230508_155710",
+            "weights/yahma_llama_7b_hf_databricks_dolly_15k_ja_deepl_lora_int8_20230508_183230",
         ]
     elif args.ds_name=="original":
         model_names = [ # original models (i.e. no FT)
+            "EleutherAI/pythia-6.9b-deduped",
+            "abeja/gpt-neox-japanese-2.7b",
+            "togethercomputer/RedPajama-INCITE-Base-7B-v0.1",
+            "yahma/llama-7b-hf"
         ]
     else:
         raise ValueError()
