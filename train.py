@@ -189,7 +189,7 @@ if __name__ in "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--data_path", default="datasets/alpaca_cleaned_ja.json")
     parser.add_argument("--model_name", required=True)
-    parser.add_argument("--batch_size", type=int)
+    parser.add_argument("--batch_size", type=int, default=128)
     parser.add_argument("--num_epochs", type=float, default=3.0)
     parser.add_argument("--eval_steps", type=int, default=200)
     parser.add_argument("--val_set_size", type=int, default=2000)
@@ -199,7 +199,7 @@ if __name__ in "__main__":
     train(
         data_path=args.data_path,
         model_name=args.model_name, 
-        # batch_size=args.batch_size, 
+        batch_size=args.batch_size, 
         num_epochs=args.num_epochs,
         eval_steps=args.eval_steps,
         val_set_size=args.val_set_size,
