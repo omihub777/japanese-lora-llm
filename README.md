@@ -41,7 +41,7 @@ python train.py --data_path "datasets/alpaca_cleaned_ja.json" --model_name "abej
 |GPT-NeoX-Japanese-2.7B|:white_check_mark: |:white_check_mark: |:white_check_mark: | :construction: |
 |MPT-7B| :construction: | :construction: | :construction: | :construction: |
 
-* Use multilingual Guanaco dataset in deference to the creator's [intention](https://huggingface.co/datasets/JosephusCheung/GuanacoDataset).
+* For Guanaco dataset, we use in multilingual in deference to the creator's [intention](https://huggingface.co/datasets/JosephusCheung/GuanacoDataset).
 
 ## TODO
 
@@ -54,10 +54,16 @@ python train.py --data_path "datasets/alpaca_cleaned_ja.json" --model_name "abej
 
 ## Results
 
+Please refer to `dialogues/`, to see all evaluation results.
+
 ### Alpaca
 
 * "5かける7は？"
     * LLaMA-7B
+
+### Dolly
+
+### Guanaco
 
 ## Acknowledgement
 * Code

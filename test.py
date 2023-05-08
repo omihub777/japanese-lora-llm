@@ -116,7 +116,7 @@ def main(model_name:str, ds_name:str, testcase_path:str, gen_hp:Dict):
             
 if __name__=="__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--ds_name", choices=["alpaca", "dolly", "original"], default="alpaca")
+    parser.add_argument("--ds_name", choices=["alpaca", "dolly", "guanaco" ,"original"], default="alpaca")
     parser.add_argument("--testcase_path", default="testcases/instruction_testcases_ja.jsonl")
     args = parser.parse_args()
 
@@ -130,18 +130,22 @@ if __name__=="__main__":
     }
 
     if args.ds_name=="alpaca":
-        model_names = [ # alpaca
-            "weights/abeja_gpt_neox_japanese_2.7b_alpaca_cleaned_ja_lora_int8_20230507_183231",
-            "weights/EleutherAI_pythia_6.9b_deduped_alpaca_cleaned_ja_lora_int8_20230507_120552",
-            "weights/togethercomputer_RedPajama_INCITE_Base_7B_v0.1_alpaca_cleaned_ja_lora_int8_20230507_222908",
-            "weights/yahma_llama_7b_hf_alpaca_cleaned_ja_lora_int8_20230508_050313"
+        model_names = [ 
+            # "weights/abeja_gpt_neox_japanese_2.7b_alpaca_cleaned_ja_lora_int8_20230507_183231",
+            # "weights/EleutherAI_pythia_6.9b_deduped_alpaca_cleaned_ja_lora_int8_20230507_120552",
+            # "weights/togethercomputer_RedPajama_INCITE_Base_7B_v0.1_alpaca_cleaned_ja_lora_int8_20230507_222908",
+            # "weights/yahma_llama_7b_hf_alpaca_cleaned_ja_lora_int8_20230508_050313"
         ]
     elif args.ds_name=="dolly":
-        model_names = [ # dolly
-            "weights/abeja_gpt_neox_japanese_2.7b_databricks_dolly_15k_ja_deepl_lora_int8_20230508_143708",
-            "weights/EleutherAI_pythia_6.9b_deduped_databricks_dolly_15k_ja_deepl_lora_int8_20230508_120504",
-            "weights/togethercomputer_RedPajama_INCITE_Base_7B_v0.1_databricks_dolly_15k_ja_deepl_lora_int8_20230508_155710",
-            "weights/yahma_llama_7b_hf_databricks_dolly_15k_ja_deepl_lora_int8_20230508_183230",
+        model_names = [
+            # "weights/abeja_gpt_neox_japanese_2.7b_databricks_dolly_15k_ja_deepl_lora_int8_20230508_143708",
+            # "weights/EleutherAI_pythia_6.9b_deduped_databricks_dolly_15k_ja_deepl_lora_int8_20230508_120504",
+            # "weights/togethercomputer_RedPajama_INCITE_Base_7B_v0.1_databricks_dolly_15k_ja_deepl_lora_int8_20230508_155710",
+            # "weights/yahma_llama_7b_hf_databricks_dolly_15k_ja_deepl_lora_int8_20230508_183230",
+        ]
+    elif args.ds_name=="guanaco":
+        model_names = [
+
         ]
     elif args.ds_name=="original":
         model_names = [ # original models (i.e. no FT)

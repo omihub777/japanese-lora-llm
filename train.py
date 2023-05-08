@@ -99,8 +99,6 @@ def train(
     prompter = AlpacaPromptTemplate(is_multling=is_multling)
     wandb_run_name=f'{model_name.replace("/","_").replace("-","_")}_{data_path.split("/")[-1].split(".")[0].replace("-","_")}'
 
-    # Check if parameter passed or if set within environ
-    # Only overwrite environ if wandb param passed
     if use_wandb:
         os.environ["WANDB_PROJECT"] = wandb_project
         os.environ["WANDB_LOG_MODEL"] = wandb_log_model
@@ -109,8 +107,6 @@ def train(
     model, tokenizer = prepare_model_tokenizer(model_name)
 
     def tokenize(prompt, add_eos_token=True):
-        # there's probably a way to do this with the tokenizer settings
-        # but again, gotta move fast
         result = tokenizer(
             prompt,
             truncation=True,
@@ -204,33 +200,3 @@ if __name__ in "__main__":
         eval_steps=args.eval_steps,
         val_set_size=args.val_set_size,
         )
-
-    # model_name = "yahma/llama-7b-hf"
-    # model_name = "mosaicml/mpt-7b"
-    # model_name = "bigscience/mt0-xl"
-    # model_name = "EleutherAI/pythia-6.9b-deduped"
-    # model_name = "togethercomputer/RedPajama-INCITE-Base-7B-v0.1"
-    # model_name = "abeja/gpt-neox-japanese-2.7b"
-
-    # model_names = [
-        # "yahma/llama-7b-hf",
-        # "EleutherAI/pythia-6.9b-deduped",
-        # "togethercomputer/RedPajama-INCITE-Base-7B-v0.1",
-        # "abeja/gpt-neox-japanese-2.7b",
-        # "bigscience/mt0-xl",
-
-        # "mosaicml/mpt-7b",
-    # ]
-    # data_paths = [
-    #     "datasets/alpaca_cleaned_ja.json",
-        # "datasets/databricks-dolly-15k-ja-deepl.json"
-    # ]
-
-    # for data_path in data_paths:
-    #     for model_name in model_names:
-    #         train(
-    #             model_name=model_name, 
-    #             data_path=data_path,
-    #             # batch_size=8,
-    #             # num_epochs=0.001
-    #             )
