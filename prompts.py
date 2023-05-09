@@ -32,3 +32,31 @@ class AlpacaPromptTemplate:
         if label:
             res = f"{res}{label}"
         return res
+
+class SimplePromptTemplate:
+    def __init__(self):
+        """
+        Args:
+            is_multling: True if a dataset consists of multiple languages.
+        """
+        file_name = "templates/simple_template.json"
+        with open(file_name) as fp:
+            self.template = json.load(fp)        
+
+    def generate_prompt(
+        self,
+        instruction: str,
+        input: Union[None, str] = None,
+        label: Union[None, str] = None,
+    ) -> str:
+        if input:
+            res = self.template["prompt_input"].format(
+                instruction=instruction, input=input
+            )
+        else:
+            res = self.template["prompt_no_input"].format(
+                instruction=instruction
+            )
+        if label:
+            res = f"{res}{label}"
+        return res

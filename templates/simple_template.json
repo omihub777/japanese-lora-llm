@@ -1,0 +1,6 @@
+{
+    "description": "Simple template",
+    "prompt_input": "",
+    "prompt_no_input": "{instruction}\n\n# 回答:\n",
+    "response_split": "# 回答:"    
+}

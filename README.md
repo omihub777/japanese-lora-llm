@@ -34,11 +34,11 @@ python train.py --data_path "datasets/alpaca_cleaned_ja.json" --model_name "abej
 
 |    |No Tuning|Alpaca-ja|Dolly-ja|Guanaco|
 |:--:|:--:|:--:|:--:|:--:|
-|LLaMA-7B|:white_check_mark: |:white_check_mark: |:white_check_mark: | :construction: |
-|LLaMA-13B|:white_check_mark: |:white_check_mark: |:white_check_mark: | :construction: |
-|RedPajama-INCITE-7B|:white_check_mark: |:white_check_mark: | :white_check_mark: | :construction: |
-|Pythia-6.9B|:white_check_mark: |:white_check_mark:|:white_check_mark:| :construction: |
-|GPT-NeoX-Japanese-2.7B|:white_check_mark: |:white_check_mark: |:white_check_mark: | :construction: |
+|LLaMA-7B|:white_check_mark: |:white_check_mark: |:white_check_mark: | :white_check_mark: |
+|LLaMA-13B|:white_check_mark: |:white_check_mark: |:white_check_mark: | :white_check_mark: |
+|RedPajama-INCITE-7B|:white_check_mark: |:white_check_mark: | :white_check_mark: | :white_check_mark: |
+|Pythia-6.9B|:white_check_mark: |:white_check_mark:|:white_check_mark:| :white_check_mark: |
+|GPT-NeoX-Japanese-2.7B|:white_check_mark: |:white_check_mark: |:white_check_mark: | :white_check_mark: |
 |MPT-7B| :construction: | :construction: | :construction: | :construction: |
 
 * For Guanaco dataset, we use in multilingual in deference to the creator's [intention](https://huggingface.co/datasets/JosephusCheung/GuanacoDataset).
@@ -48,6 +48,7 @@ python train.py --data_path "datasets/alpaca_cleaned_ja.json" --model_name "abej
 - [ ] Train / Eval Guanaco
 - [ ] Compare results so far
 - [ ] Add a generation interface
+- [ ] Add docstrings for each func/class
 - [ ] Upload delta weights(=lora adapters) on Hugging Face Hub
 - [ ] Support for MPT-7b
 - [ ] Support for LoRA-tuning for emb/head layers

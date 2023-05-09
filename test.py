@@ -12,7 +12,7 @@ from transformers import (
     AutoModelForSeq2SeqLM
 )
 
-from prompts import AlpacaPromptTemplate
+from prompts import AlpacaPromptTemplate, SimplePromptTemplate
 from constants import (
     CAUSAL_LM_MODELS,
 )
@@ -32,6 +32,7 @@ def load_test_model(model_name:str):
             load_in_8bit=True, 
             device_map={"":0},
             trust_remote_code=trust_remote_code,
+            torch_dtype=torch.float16,
         )
         model = PeftModel.from_pretrained(model, model_name, device_map={"":0})
     else:
@@ -44,6 +45,7 @@ def load_test_model(model_name:str):
             load_in_8bit=True, 
             device_map={"":0},
             trust_remote_code=trust_remote_code,
+            torch_dtype=torch.float16,
             )
 
     if tokenizer.pad_token is None:
@@ -54,11 +56,16 @@ def load_test_model(model_name:str):
 
 
 class QualitativeTester:
-    def __init__(self, testcase_path:str, model_name:str):
+    def __init__(self, testcase_path:str, model_name:str, prompt_type:str="alpaca"):
         with open(testcase_path) as f:
             self.testcases = json.load(f)
 
-        self.prompt = AlpacaPromptTemplate()
+        if prompt_type=="simple":
+            self.prompt = SimplePromptTemplate()
+        elif prompt_type=="alpaca":
+            self.prompt = AlpacaPromptTemplate()
+        else:
+            raise ValueError(f"No such template: {prompt_type}")
         self.model, self.tokenizer, self.is_causal = load_test_model(model_name=model_name)
         self.device = "cuda:0" if torch.cuda.is_available() else "cpu"
 
@@ -97,27 +104,29 @@ class QualitativeTester:
 
 
 
-def main(model_name:str, ds_name:str, testcase_path:str, gen_hp:Dict):
-    tester = QualitativeTester(testcase_path=testcase_path, model_name=model_name)
+def main(model_name:str, ds_name:str, testcase_path:str, gen_hp:Dict, is_save:bool=False, prompt_type:str="alpaca"):
+    tester = QualitativeTester(testcase_path=testcase_path, model_name=model_name, prompt_type=prompt_type)
     responses = tester.test(gen_hp)
-
-    save_dir = os.path.join("dialogues",ds_name,model_name.split("/")[-1])
-    save_path = os.path.join(save_dir, testcase_path.split("/")[-1].split(".")[0]+"_result.json")
-    if not os.path.exists(save_dir): os.makedirs(save_dir)
-    with open(save_path, "w") as fw:
-        fw.write("[\n")
-        for response in responses[:-1]:
-            json.dump(response, fw, ensure_ascii=False)
-            fw.write(",\n")
-        json.dump(responses[-1], fw, ensure_ascii=False)
-        fw.write(f"\n]")
-    print("\n"+save_path)
+    if is_save:
+        save_dir = os.path.join("dialogues",ds_name,model_name.split("/")[-1])
+        save_path = os.path.join(save_dir, testcase_path.split("/")[-1].split(".")[0]+"_result.json")
+        if not os.path.exists(save_dir): os.makedirs(save_dir)
+        with open(save_path, "w") as fw:
+            fw.write("[\n")
+            for response in responses[:-1]:
+                json.dump(response, fw, ensure_ascii=False)
+                fw.write(",\n")
+            json.dump(responses[-1], fw, ensure_ascii=False)
+            fw.write(f"\n]")
+        print("\n"+save_path)
     print(responses)
             
 if __name__=="__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--ds_name", choices=["alpaca", "dolly", "guanaco" ,"original"], default="alpaca")
+    parser.add_argument("--prompt_type", choices=["alpaca", "simple"], default="alpaca")
     parser.add_argument("--testcase_path", default="testcases/instruction_testcases_ja.jsonl")
+    parser.add_argument("--no_save", action="store_true")
     args = parser.parse_args()
 
     gen_hp = { # LLaMA-Precise preset
@@ -134,7 +143,8 @@ if __name__=="__main__":
             # "weights/abeja_gpt_neox_japanese_2.7b_alpaca_cleaned_ja_lora_int8_20230507_183231",
             # "weights/EleutherAI_pythia_6.9b_deduped_alpaca_cleaned_ja_lora_int8_20230507_120552",
             # "weights/togethercomputer_RedPajama_INCITE_Base_7B_v0.1_alpaca_cleaned_ja_lora_int8_20230507_222908",
-            # "weights/yahma_llama_7b_hf_alpaca_cleaned_ja_lora_int8_20230508_050313"
+            # "weights/yahma_llama_7b_hf_alpaca_cleaned_ja_lora_int8_20230508_050313",
+            "weights/yahma_llama_13b_hf_alpaca_cleaned_ja_lora_int8_20230508_232828",
         ]
     elif args.ds_name=="dolly":
         model_names = [
@@ -142,20 +152,29 @@ if __name__=="__main__":
             # "weights/EleutherAI_pythia_6.9b_deduped_databricks_dolly_15k_ja_deepl_lora_int8_20230508_120504",
             # "weights/togethercomputer_RedPajama_INCITE_Base_7B_v0.1_databricks_dolly_15k_ja_deepl_lora_int8_20230508_155710",
             # "weights/yahma_llama_7b_hf_databricks_dolly_15k_ja_deepl_lora_int8_20230508_183230",
+            "weights/yahma_llama_13b_hf_databricks_dolly_15k_ja_deepl_lora_int8_20230509_082716",
         ]
     elif args.ds_name=="guanaco":
         model_names = [
-
+            "weights/abeja_gpt_neox_japanese_2.7b_guanaco_non_chat_utf8_lora_int8_20230509_115054",
         ]
     elif args.ds_name=="original":
-        model_names = [ # original models (i.e. no FT)
-            "EleutherAI/pythia-6.9b-deduped",
+        model_names = [ # original models
+            # "EleutherAI/pythia-6.9b-deduped",
             "abeja/gpt-neox-japanese-2.7b",
-            "togethercomputer/RedPajama-INCITE-Base-7B-v0.1",
-            "yahma/llama-7b-hf"
+            # "togethercomputer/RedPajama-INCITE-Base-7B-v0.1",
+            # "yahma/llama-7b-hf",
+            # "yahma/llama-13b-hf",
         ]
     else:
         raise ValueError()
 
     for model_name in model_names:
-        main(model_name=model_name, ds_name=args.ds_name, testcase_path=args.testcase_path, gen_hp=gen_hp)
+        main(
+            model_name=model_name, 
+            ds_name=args.ds_name, 
+            testcase_path=args.testcase_path, 
+            gen_hp=gen_hp,
+            is_save= False if args.no_save else True,
+            prompt_type = args.prompt_type
+        )

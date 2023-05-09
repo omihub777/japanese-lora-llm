@@ -5,6 +5,8 @@ CAUSAL_LM_MODELS = [
     "EleutherAI/pythia-6.9b-deduped",
     "togethercomputer/RedPajama-INCITE-Base-7B-v0.1",
     "abeja/gpt-neox-japanese-2.7b",
+    "decapoda-research/llama-7b-hf",
+    "decapoda-research/llama-13b-hf",
 ]
 
 LORA_TARGET_MODULES_DICT = {
