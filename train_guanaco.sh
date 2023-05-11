@@ -4,3 +4,6 @@ python train.py --data_path "datasets/guanaco_non_chat-utf8.json" --num_epochs 1
 python train.py --data_path "datasets/guanaco_non_chat-utf8.json" --num_epochs 1.0 --model_name "togethercomputer/RedPajama-INCITE-Base-7B-v0.1"
 python train.py --data_path "datasets/guanaco_non_chat-utf8.json" --num_epochs 1.0 --model_name "yahma/llama-7b-hf"
 python train.py --data_path "datasets/guanaco_non_chat-utf8.json" --num_epochs 1.0 --model_name "yahma/llama-13b-hf"
+# python train.py --model_name "rinna/japanese-gpt-1b" --data_path "datasets/alpaca_cleaned_ja.json"
+# python train.py --model_name "rinna/japanese-gpt-1b" --data_path "datasets/databricks-dolly-15k-ja-deepl.json" --val_set_size 700 --eval_steps 70
+# python train.py --model_name "rinna/japanese-gpt-1b" --data_path "datasets/guanaco_non_chat-utf8.json" --num_epochs 1.0

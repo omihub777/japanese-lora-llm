@@ -156,7 +156,11 @@ if __name__=="__main__":
         ]
     elif args.ds_name=="guanaco":
         model_names = [
-            "weights/abeja_gpt_neox_japanese_2.7b_guanaco_non_chat_utf8_lora_int8_20230509_115054",
+            # "weights/abeja_gpt_neox_japanese_2.7b_guanaco_non_chat_utf8_lora_int8_20230509_115054",
+            "weights/EleutherAI_pythia_6.9b_deduped_guanaco_non_chat_utf8_lora_int8_20230510_010727",
+            "weights/togethercomputer_RedPajama_INCITE_Base_7B_v0.1_guanaco_non_chat_utf8_lora_int8_20230510_120204",
+            "weights/yahma_llama_7b_hf_guanaco_non_chat_utf8_lora_int8_20230510_231027",
+            "weights/yahma_llama_13b_hf_guanaco_non_chat_utf8_lora_int8_20230511_081104",
         ]
     elif args.ds_name=="original":
         model_names = [ # original models

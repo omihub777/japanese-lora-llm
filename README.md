@@ -1,4 +1,4 @@
-# japanese-lora-llm
+# Japanese LoRA-tuned LLMs :racehorse: :jp:
 A collection of Japanese LoRA-tuned LLMs.
 
 ## Environment
@@ -38,15 +38,17 @@ python train.py --data_path "datasets/alpaca_cleaned_ja.json" --model_name "abej
 |LLaMA-13B|:white_check_mark: |:white_check_mark: |:white_check_mark: | :white_check_mark: |
 |RedPajama-INCITE-7B|:white_check_mark: |:white_check_mark: | :white_check_mark: | :white_check_mark: |
 |Pythia-6.9B|:white_check_mark: |:white_check_mark:|:white_check_mark:| :white_check_mark: |
+|Japanese-GPT-1B|:construction: |:construction: |:construction: | :construction: |
 |GPT-NeoX-Japanese-2.7B|:white_check_mark: |:white_check_mark: |:white_check_mark: | :white_check_mark: |
-|MPT-7B| :construction: | :construction: | :construction: | :construction: |
+<!-- |MPT-7B| :construction: | :construction: | :construction: | :construction: | -->
 
 * For Guanaco dataset, we use in multilingual in deference to the creator's [intention](https://huggingface.co/datasets/JosephusCheung/GuanacoDataset).
 
 ## TODO
 
-- [ ] Train / Eval Guanaco
-- [ ] Compare results so far
+- [x] Train / Eval Guanaco
+- [x] Compare results so far
+- [ ] Train rinna/japanese-gpt-1b
 - [ ] Add a generation interface
 - [ ] Add docstrings for each func/class
 - [ ] Upload delta weights(=lora adapters) on Hugging Face Hub
