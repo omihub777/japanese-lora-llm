@@ -9,6 +9,6 @@
 # python test.py --ds_name alpaca
 # python test.py --ds_name dolly
 # python train.py --data_path "datasets/guanaco_non_chat-utf8.json" --num_epochs 1.0 --model_name "abeja/gpt-neox-japanese-2.7b"
-# python train.py --model_name "rinna/japanese-gpt-1b" --data_path "datasets/alpaca_cleaned_ja.json"
-# python train.py --model_name "rinna/japanese-gpt-1b" --data_path "datasets/databricks-dolly-15k-ja-deepl.json" --val_set_size 700 --eval_steps 70
-# python train.py --model_name "rinna/japanese-gpt-1b" --data_path "datasets/guanaco_non_chat-utf8.json" --num_epochs 1.0
+python train.py --model_name "rinna/japanese-gpt-1b" --data_path "datasets/alpaca_cleaned_ja.json"
+python train.py --model_name "rinna/japanese-gpt-1b" --data_path "datasets/databricks-dolly-15k-ja-deepl.json" --val_set_size 700 --eval_steps 70
+python train.py --model_name "rinna/japanese-gpt-1b" --data_path "datasets/guanaco_non_chat-utf8.json" --num_epochs 1.0

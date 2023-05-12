@@ -40,7 +40,10 @@ def prepare_model_tokenizer(model_name:str):
     
     is_causal = model_name in CAUSAL_LM_MODELS
 
-    tokenizer = AutoTokenizer.from_pretrained(model_name)
+    tokenizer = AutoTokenizer.from_pretrained(
+        model_name,
+        use_fast= model_name != "rinna/japanese-gpt-1b", #Might be a better way 
+    )
     if tokenizer.pad_token is None:
         tokenizer.pad_token_id = (0)
         # tokenizer.pad_token_id = (tokenizer.unk_token_id)
@@ -176,6 +179,15 @@ def train(
         ).__get__(model, type(model))
 
     model = torch.compile(model)
+
+    if model_name=="rinna/japanese-gpt-1b": # temporary fix for weird bugs regarding device and dtype...
+        transformer_mods = model._orig_mod.base_model.model.transformer.h
+        for transformer_mod in transformer_mods:
+            transformer_mod.attn.bias = transformer_mod.attn.bias.to(torch.bool)
+            transformer_mod.attn.c_attn.lora_A.weight.data = transformer_mod.attn.c_attn.lora_A.weight.data.to(model.device)
+            transformer_mod.attn.c_attn.lora_B.weight.data = transformer_mod.attn.c_attn.lora_B.weight.data.to(model.device)
+
+
     trainer.train()
     model.save_pretrained(output_dir)
 

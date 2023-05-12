@@ -26,7 +26,10 @@ def load_test_model(model_name:str):
         is_causal = config.base_model_name_or_path in CAUSAL_LM_MODELS
         model_cls = AutoModelForCausalLM if is_causal else AutoModelForSeq2SeqLM
 
-        tokenizer = AutoTokenizer.from_pretrained(config.base_model_name_or_path)
+        tokenizer = AutoTokenizer.from_pretrained(
+            config.base_model_name_or_path,
+            use_fast= config.base_model_name_or_path!="rinna/japanese-gpt-1b"
+        )
         model = model_cls.from_pretrained(
             config.base_model_name_or_path, 
             load_in_8bit=True, 
@@ -35,6 +38,7 @@ def load_test_model(model_name:str):
             torch_dtype=torch.float16,
         )
         model = PeftModel.from_pretrained(model, model_name, device_map={"":0})
+
     else:
         is_causal = model_name in CAUSAL_LM_MODELS
         model_cls = AutoModelForCausalLM if is_causal else AutoModelForSeq2SeqLM
@@ -144,7 +148,8 @@ if __name__=="__main__":
             # "weights/EleutherAI_pythia_6.9b_deduped_alpaca_cleaned_ja_lora_int8_20230507_120552",
             # "weights/togethercomputer_RedPajama_INCITE_Base_7B_v0.1_alpaca_cleaned_ja_lora_int8_20230507_222908",
             # "weights/yahma_llama_7b_hf_alpaca_cleaned_ja_lora_int8_20230508_050313",
-            "weights/yahma_llama_13b_hf_alpaca_cleaned_ja_lora_int8_20230508_232828",
+            # "weights/yahma_llama_13b_hf_alpaca_cleaned_ja_lora_int8_20230508_232828",
+            # "weights/rinna_japanese_gpt_1b_alpaca_cleaned_ja_lora_int8_20230512_014739",
         ]
     elif args.ds_name=="dolly":
         model_names = [
@@ -152,15 +157,17 @@ if __name__=="__main__":
             # "weights/EleutherAI_pythia_6.9b_deduped_databricks_dolly_15k_ja_deepl_lora_int8_20230508_120504",
             # "weights/togethercomputer_RedPajama_INCITE_Base_7B_v0.1_databricks_dolly_15k_ja_deepl_lora_int8_20230508_155710",
             # "weights/yahma_llama_7b_hf_databricks_dolly_15k_ja_deepl_lora_int8_20230508_183230",
-            "weights/yahma_llama_13b_hf_databricks_dolly_15k_ja_deepl_lora_int8_20230509_082716",
+            # "weights/yahma_llama_13b_hf_databricks_dolly_15k_ja_deepl_lora_int8_20230509_082716",
+            # "weights/rinna_japanese_gpt_1b_databricks_dolly_15k_ja_deepl_lora_int8_20230512_024629",
         ]
     elif args.ds_name=="guanaco":
         model_names = [
             # "weights/abeja_gpt_neox_japanese_2.7b_guanaco_non_chat_utf8_lora_int8_20230509_115054",
-            "weights/EleutherAI_pythia_6.9b_deduped_guanaco_non_chat_utf8_lora_int8_20230510_010727",
-            "weights/togethercomputer_RedPajama_INCITE_Base_7B_v0.1_guanaco_non_chat_utf8_lora_int8_20230510_120204",
-            "weights/yahma_llama_7b_hf_guanaco_non_chat_utf8_lora_int8_20230510_231027",
-            "weights/yahma_llama_13b_hf_guanaco_non_chat_utf8_lora_int8_20230511_081104",
+            # "weights/EleutherAI_pythia_6.9b_deduped_guanaco_non_chat_utf8_lora_int8_20230510_010727",
+            # "weights/togethercomputer_RedPajama_INCITE_Base_7B_v0.1_guanaco_non_chat_utf8_lora_int8_20230510_120204",
+            # "weights/yahma_llama_7b_hf_guanaco_non_chat_utf8_lora_int8_20230510_231027",
+            # "weights/yahma_llama_13b_hf_guanaco_non_chat_utf8_lora_int8_20230511_081104",
+            # "weights/rinna_japanese_gpt_1b_guanaco_non_chat_utf8_lora_int8_20230512_030943",
         ]
     elif args.ds_name=="original":
         model_names = [ # original models
