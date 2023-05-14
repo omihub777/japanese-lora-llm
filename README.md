@@ -52,6 +52,7 @@ python train.py --data_path "datasets/alpaca_cleaned_ja.json" --model_name "abej
 - [ ] Train rinna/japanese-gpt-1b
 - [ ] Add a generation interface
 - [ ] Add docstrings for each func/class
+- [ ] Add a notebook (train/generate) for Colab
 - [ ] Upload delta weights(=lora adapters) on Hugging Face Hub
 - [ ] Support for MPT-7b
 - [ ] Support for LoRA-tuning for emb/head layers
