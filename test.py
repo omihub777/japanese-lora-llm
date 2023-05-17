@@ -150,6 +150,8 @@ if __name__=="__main__":
             # "weights/yahma_llama_7b_hf_alpaca_cleaned_ja_lora_int8_20230508_050313",
             # "weights/yahma_llama_13b_hf_alpaca_cleaned_ja_lora_int8_20230508_232828",
             # "weights/rinna_japanese_gpt_1b_alpaca_cleaned_ja_lora_int8_20230512_014739",
+            "weights/retrieva_jp_t5_xl_alpaca_cleaned_ja_lora_int8_20230516_000130",
+            "weights/EleutherAI_pythia_12b_deduped_alpaca_cleaned_ja_lora_int8_20230514_180727",
         ]
     elif args.ds_name=="dolly":
         model_names = [
@@ -159,6 +161,8 @@ if __name__=="__main__":
             # "weights/yahma_llama_7b_hf_databricks_dolly_15k_ja_deepl_lora_int8_20230508_183230",
             # "weights/yahma_llama_13b_hf_databricks_dolly_15k_ja_deepl_lora_int8_20230509_082716",
             # "weights/rinna_japanese_gpt_1b_databricks_dolly_15k_ja_deepl_lora_int8_20230512_024629",
+            "weights/retrieva_jp_t5_xl_databricks_dolly_15k_ja_deepl_lora_int8_20230516_035259",
+            "weights/EleutherAI_pythia_12b_deduped_databricks_dolly_15k_ja_deepl_lora_int8_20230515_193036",
         ]
     elif args.ds_name=="guanaco":
         model_names = [
@@ -168,6 +172,8 @@ if __name__=="__main__":
             # "weights/yahma_llama_7b_hf_guanaco_non_chat_utf8_lora_int8_20230510_231027",
             # "weights/yahma_llama_13b_hf_guanaco_non_chat_utf8_lora_int8_20230511_081104",
             # "weights/rinna_japanese_gpt_1b_guanaco_non_chat_utf8_lora_int8_20230512_030943",
+            "weights/retrieva_jp_t5_xl_guanaco_non_chat_utf8_lora_int8_20230516_051522",
+            "weights/EleutherAI_pythia_12b_deduped_guanaco_non_chat_utf8_lora_int8_20230516_124120",
         ]
     elif args.ds_name=="original":
         model_names = [ # original models

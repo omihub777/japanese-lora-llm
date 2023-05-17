@@ -38,11 +38,14 @@ python train.py --data_path "datasets/alpaca_cleaned_ja.json" --model_name "abej
 |LLaMA-13B|:white_check_mark: |:white_check_mark: |:white_check_mark: | :white_check_mark: |
 |RedPajama-INCITE-7B|:white_check_mark: |:white_check_mark: | :white_check_mark: | :white_check_mark: |
 |Pythia-6.9B|:white_check_mark: |:white_check_mark:|:white_check_mark:| :white_check_mark: |
+|Pythia-12B|:white_check_mark: |:white_check_mark:|:white_check_mark:| :white_check_mark: |
 |GPT-NeoX-Japanese-2.7B|:white_check_mark: |:white_check_mark: |:white_check_mark: | :white_check_mark: |
+|OpenCALM-7B| :construction: | :construction: | :construction: | :construction: |
 |Japanese-GPT-1B (**)|:construction: |:construction: |:construction: | :construction: |
+|Japanese-GPT-NeoX-3.6B| :construction: | :construction: | :construction: | :construction: |
 <!-- |MPT-7B| :construction: | :construction: | :construction: | :construction: | -->
 
-(*) For Guanaco dataset, we use in multilingual in deference to the creator's [intention](https://huggingface.co/datasets/JosephusCheung/GuanacoDataset).
+(*) For Guanaco dataset, we use in multilingual in deference to the creator's [intention](https://huggingface.co/datasets/JosephusCheung/GuanacoDataset).  
 (**) Training script might be something wrong. work in progress.
 
 ## TODO

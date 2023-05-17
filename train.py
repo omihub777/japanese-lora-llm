@@ -109,13 +109,14 @@ def train(
     output_dir = "weights/"+wandb_run_name + f"_lora_int8_{timestamp}"
     model, tokenizer = prepare_model_tokenizer(model_name)
 
-    def tokenize(prompt, add_eos_token=True):
+    def tokenize(prompt:str, text_target:str=None, add_eos_token=True):
         result = tokenizer(
             prompt,
             truncation=True,
             max_length=cutoff_len,
             padding=False,
             return_tensors=None,
+            text_target=text_target,
         )
         if (
             result["input_ids"][-1] != tokenizer.eos_token_id
@@ -125,17 +126,23 @@ def train(
             result["input_ids"].append(tokenizer.eos_token_id)
             result["attention_mask"].append(1)
 
-        result["labels"] = result["input_ids"].copy()
+        if text_target is None:
+            result["labels"] = result["input_ids"].copy()
 
         return result
 
     def generate_and_tokenize_prompt(data_point):
+        is_causal = model_name in CAUSAL_LM_MODELS
+        
         full_prompt = prompter.generate_prompt(
             data_point["instruction"],
             data_point["input"],
-            data_point["output"],
+            label = data_point["output"] if is_causal else None,
         )
-        tokenized_full_prompt = tokenize(full_prompt)
+        tokenized_full_prompt = tokenize(
+            full_prompt,
+            text_target=data_point["output"] if not is_causal else None
+        )
         return tokenized_full_prompt
 
     data = load_dataset("json", data_files=data_path)
