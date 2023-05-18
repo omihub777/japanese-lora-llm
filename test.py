@@ -28,7 +28,7 @@ def load_test_model(model_name:str):
 
         tokenizer = AutoTokenizer.from_pretrained(
             config.base_model_name_or_path,
-            use_fast= config.base_model_name_or_path!="rinna/japanese-gpt-1b"
+            use_fast= "rinna" not in config.base_model_name_or_path,
         )
         model = model_cls.from_pretrained(
             config.base_model_name_or_path, 
@@ -43,7 +43,10 @@ def load_test_model(model_name:str):
         is_causal = model_name in CAUSAL_LM_MODELS
         model_cls = AutoModelForCausalLM if is_causal else AutoModelForSeq2SeqLM
 
-        tokenizer = AutoTokenizer.from_pretrained(model_name)
+        tokenizer = AutoTokenizer.from_pretrained(
+            model_name,
+            use_fast="rinna" not in model_name,
+        )
         model = model_cls.from_pretrained(
             model_name, 
             load_in_8bit=True, 
@@ -110,6 +113,13 @@ class QualitativeTester:
 
 def main(model_name:str, ds_name:str, testcase_path:str, gen_hp:Dict, is_save:bool=False, prompt_type:str="alpaca"):
     tester = QualitativeTester(testcase_path=testcase_path, model_name=model_name, prompt_type=prompt_type)
+    if "rinna" in model_name:
+        gen_hp.update({
+        "pad_token_id":tester.tokenizer.pad_token_id,
+        "bos_token_id":tester.tokenizer.bos_token_id,
+        "eos_token_id":tester.tokenizer.eos_token_id,
+        })
+
     responses = tester.test(gen_hp)
     if is_save:
         save_dir = os.path.join("dialogues",ds_name,model_name.split("/")[-1])
@@ -150,8 +160,10 @@ if __name__=="__main__":
             # "weights/yahma_llama_7b_hf_alpaca_cleaned_ja_lora_int8_20230508_050313",
             # "weights/yahma_llama_13b_hf_alpaca_cleaned_ja_lora_int8_20230508_232828",
             # "weights/rinna_japanese_gpt_1b_alpaca_cleaned_ja_lora_int8_20230512_014739",
-            "weights/retrieva_jp_t5_xl_alpaca_cleaned_ja_lora_int8_20230516_000130",
-            "weights/EleutherAI_pythia_12b_deduped_alpaca_cleaned_ja_lora_int8_20230514_180727",
+            # "weights/retrieva_jp_t5_xl_alpaca_cleaned_ja_lora_int8_20230516_000130",
+            # "weights/EleutherAI_pythia_12b_deduped_alpaca_cleaned_ja_lora_int8_20230514_180727",
+            # "weights/cyberagent_open_calm_7b_alpaca_cleaned_ja_lora_int8_20230517_111546",
+            "weights/rinna_japanese_gpt_neox_3.6b_alpaca_cleaned_ja_lora_int8_20230518_102931",
         ]
     elif args.ds_name=="dolly":
         model_names = [
@@ -161,8 +173,10 @@ if __name__=="__main__":
             # "weights/yahma_llama_7b_hf_databricks_dolly_15k_ja_deepl_lora_int8_20230508_183230",
             # "weights/yahma_llama_13b_hf_databricks_dolly_15k_ja_deepl_lora_int8_20230509_082716",
             # "weights/rinna_japanese_gpt_1b_databricks_dolly_15k_ja_deepl_lora_int8_20230512_024629",
-            "weights/retrieva_jp_t5_xl_databricks_dolly_15k_ja_deepl_lora_int8_20230516_035259",
-            "weights/EleutherAI_pythia_12b_deduped_databricks_dolly_15k_ja_deepl_lora_int8_20230515_193036",
+            # "weights/retrieva_jp_t5_xl_databricks_dolly_15k_ja_deepl_lora_int8_20230516_035259",
+            # "weights/EleutherAI_pythia_12b_deduped_databricks_dolly_15k_ja_deepl_lora_int8_20230515_193036",
+            # "weights/cyberagent_open_calm_7b_databricks_dolly_15k_ja_deepl_lora_int8_20230517_161809",
+            "weights/rinna_japanese_gpt_neox_3.6b_databricks_dolly_15k_ja_deepl_lora_int8_20230518_141905",
         ]
     elif args.ds_name=="guanaco":
         model_names = [
@@ -172,13 +186,20 @@ if __name__=="__main__":
             # "weights/yahma_llama_7b_hf_guanaco_non_chat_utf8_lora_int8_20230510_231027",
             # "weights/yahma_llama_13b_hf_guanaco_non_chat_utf8_lora_int8_20230511_081104",
             # "weights/rinna_japanese_gpt_1b_guanaco_non_chat_utf8_lora_int8_20230512_030943",
-            "weights/retrieva_jp_t5_xl_guanaco_non_chat_utf8_lora_int8_20230516_051522",
-            "weights/EleutherAI_pythia_12b_deduped_guanaco_non_chat_utf8_lora_int8_20230516_124120",
+            # "weights/retrieva_jp_t5_xl_guanaco_non_chat_utf8_lora_int8_20230516_051522",
+            # "weights/EleutherAI_pythia_12b_deduped_guanaco_non_chat_utf8_lora_int8_20230516_124120",
+            # "weights/cyberagent_open_calm_7b_guanaco_non_chat_utf8_lora_int8_20230517_181437",
+            "weights/rinna_japanese_gpt_neox_3.6b_guanaco_non_chat_utf8_lora_int8_20230518_154418",
         ]
     elif args.ds_name=="original":
         model_names = [ # original models
             # "EleutherAI/pythia-6.9b-deduped",
-            "abeja/gpt-neox-japanese-2.7b",
+            # "EleutherAI/pythia-12b-deduped",
+            # "abeja/gpt-neox-japanese-2.7b",
+            # "retrieva-jp/t5-xl",
+            # "cyberagent/open-calm-7b",
+            # "EleutherAI/pythia-2.8b-deduped",
+            # "rinna/japanese-gpt-neox-3.6b",
             # "togethercomputer/RedPajama-INCITE-Base-7B-v0.1",
             # "yahma/llama-7b-hf",
             # "yahma/llama-13b-hf",

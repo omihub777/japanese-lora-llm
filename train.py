@@ -42,7 +42,7 @@ def prepare_model_tokenizer(model_name:str):
 
     tokenizer = AutoTokenizer.from_pretrained(
         model_name,
-        use_fast= model_name != "rinna/japanese-gpt-1b", #Might be a better way 
+        use_fast= "rinna" not in model_name, #There might be a better way 
     )
     if tokenizer.pad_token is None:
         tokenizer.pad_token_id = (0)
@@ -133,7 +133,7 @@ def train(
 
     def generate_and_tokenize_prompt(data_point):
         is_causal = model_name in CAUSAL_LM_MODELS
-        
+
         full_prompt = prompter.generate_prompt(
             data_point["instruction"],
             data_point["input"],

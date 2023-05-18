@@ -40,9 +40,10 @@ python train.py --data_path "datasets/alpaca_cleaned_ja.json" --model_name "abej
 |Pythia-6.9B|:white_check_mark: |:white_check_mark:|:white_check_mark:| :white_check_mark: |
 |Pythia-12B|:white_check_mark: |:white_check_mark:|:white_check_mark:| :white_check_mark: |
 |GPT-NeoX-Japanese-2.7B|:white_check_mark: |:white_check_mark: |:white_check_mark: | :white_check_mark: |
-|OpenCALM-7B| :construction: | :construction: | :construction: | :construction: |
+|OpenCALM-7B|:white_check_mark: |:white_check_mark: |:white_check_mark: | :white_check_mark: |
+|T5-xl|:white_check_mark: |:white_check_mark: |:white_check_mark: | :white_check_mark: |
 |Japanese-GPT-1B (**)|:construction: |:construction: |:construction: | :construction: |
-|Japanese-GPT-NeoX-3.6B| :construction: | :construction: | :construction: | :construction: |
+|Japanese-GPT-NeoX-3.6B (**)| :construction: | :construction: | :construction: | :construction: |
 <!-- |MPT-7B| :construction: | :construction: | :construction: | :construction: | -->
 
 (*) For Guanaco dataset, we use in multilingual in deference to the creator's [intention](https://huggingface.co/datasets/JosephusCheung/GuanacoDataset).  
