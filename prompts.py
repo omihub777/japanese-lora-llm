@@ -35,10 +35,6 @@ class AlpacaPromptTemplate:
 
 class SimplePromptTemplate:
     def __init__(self):
-        """
-        Args:
-            is_multling: True if a dataset consists of multiple languages.
-        """
         file_name = "templates/simple_template.json"
         with open(file_name) as fp:
             self.template = json.load(fp)        
