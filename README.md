@@ -48,7 +48,7 @@ python train.py --data_path "datasets/alpaca_cleaned_ja.json" --model_name "abej
 <!-- |MPT-7B| :construction: | :construction: | :construction: | :construction: | -->
 
 (*) For Guanaco dataset, we use in multilingual in deference to the creator's [intention](https://huggingface.co/datasets/JosephusCheung/GuanacoDataset).  
-(**) Training script might be something wrong. work in progress.
+(**) Training script might be something wrong. work in progress.  
 
 ## TODO
 

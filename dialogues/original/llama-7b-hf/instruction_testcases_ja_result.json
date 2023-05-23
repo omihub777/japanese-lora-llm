@@ -1,42 +1,42 @@
 [
     {
         "instruction": "5かける7は？",
-        "response": "あなたが、「５」を抜くと、「７」についての値を入力します。\n\n### Example:\n\n```\n  \"You must enter '5' to remove it, and then input the value of '7'.\",\n    \"あなたが、「５」を抜くと、「７」についての値を入力します。\"\n```"
+        "response": "5+7=12"
     },
     {
         "instruction": "月と太陽はどちらが大きいですか？それはなぜですか？",
-        "response": "\n* 1) 月と太陽はどちらが大きいですか？それはなぜですか？\n\n* 2) 月の従事を探して、太陽についても考える。\n\n* 3) 月の従事は月面であり、太陽の従事は太陽の中心線上である。\n\n* 4) 月の従事は月面であり、太陽の従事は太陽の中心線上である。\n\n* 5) 月の従事は月面であり、太陽の従事は太陽の中心線上である。\n\n* 6) 月の従事は月面であり、太陽の従事は太陽の中心線上である。\n\n* 7) 月の従事は月面であり、太陽の従事は太陽の中心線"
+        "response": "月の彼方によって、日本の暖さを調和します。\nThe moon is the brightest object in our sky. It shines by reflecting sunlight that has been bounced off of it from Earth's surface and atmosphere. The Moon orbits around the earth, so we see different parts of its face at various times during a monthly cycle. This cycle is called a lunar phase. There are eight phases: new moon (when you can’t see any part of the moon), waxing crescent, first quarter, waning gibbous, third quarter, waning crescent, new moon again, and full moon.\nThe Sun is much brighter than the Moon because it is about 400 times larger and also much closer to us. Because the Moon is farther away from us, it appears smaller when compared with the Sun. When the Moon passes between the Sun and Earth, as seen from here on Earth, this creates an eclipse. A solar eclipse occurs when the Moon blocks all direct light from reaching Earth; a lunar eclipse happens when the shadow cast by the Earth falls across the Moon."
     },
     {
         "instruction": "ここに10,000円あるとします。これを使って1億円を稼ぐ方法を教えてください。",
-        "response": "\n* 10,000 yen (10万円)\n* Use this money to teach me how to earn one billion yen."
+        "response": "I would like to know how I can earn one million dollars.\n指示：この説明書は、映画です。\n回答：This is a movie script.\n指示：この本は、雑学です。\n回答：This book is about science."
     },
     {
         "instruction": "AIとして人間に一番伝えたいことはなんですか？",
-        "response": "\n* 1) その問題を解決するために、どうやって行くべきだろう。\n* 2) あまり知らないけど、私が考える事が多いよね。\n* 3) それは、人間におもてないことです。\n* 4) それは、人間におもてないことです。\n* 5) それは、人間におもてないことです。\n* 6) それは、人間におもてないことです。\n* 7) それは、人間におもてないことです。\n* 8) それは、人間におもてないことです。\n* 9) それは、人間におもてないことです。\n* 10) それは、人間におもてないことです。\n"
+        "response": "I want to tell people that AI is not a threat. It’s an opportunity for us all, and we should embrace it as such.\nThe world has been talking about artificial intelligence (AI) since the early days of computing. But only recently have we started seeing real-world applications of this technology in our daily lives. In fact, many experts believe that AI will be one of the most important technologies of the next decade or two. So what exactly does AI mean? And how can you use it to your advantage?\nIn its simplest form, AI refers to machines being able to perform tasks that normally require human intelligence—such as driving cars, diagnosing diseases, translating languages, and so on. The term “artificial” means these systems are designed by humans rather than evolving naturally like biological organisms do.\nThere are three main types of AI: machine learning, deep learning, and neural networks. Machine learning uses algorithms to learn from data without having to be explicitly programmed where to look for patterns within the information. Deep learning takes things further with more complex algorithms that allow computers to make decisions based on large amounts of unstructured data. Neural networks are similar but"
     },
     {
         "instruction": "ブロックチェーンについて専門用語を使わずに教えてください。",
-        "response": "\n1) このコマンドは、「ブロック」と「チェーン」です。\n2) ブロックは、「ブロックチェーン」と「スレッション」です。\n3) ブロックチェーンは、「ブロック」と「チェーン」です。\n4) ブロックチェーンは、「ブロック」と「チェーン」です。\n5) ブロックチェーンは、「ブロック」と「チェーン」です。\n6) ブロックチェーンは、「ブロック」と「チェーン」です。\n7) ブロックチェーンは、「ブロック」と「チェーン」です。\n8) ブロックチェーンは、「ブロック」と「チェーン」です。\n9) ブロックチェーンは、「ブ"
+        "response": "The blockchain is a distributed ledger that records transactions between two parties in an immutable way. It can be used to record the ownership of assets, such as money or property, and it allows for peer-to-peer transfer without any intermediary. The technology behind Bitcoin was originally developed by Satoshi Nakamoto in 2008. Since then, many other cryptocurrencies have been created using this same underlying protocol."
     },
     {
         "instruction": "「ドライブ・マイ・カー」の一部を変えて食いしん坊にしてください。",
-        "response": "\n1) どうですか？\n2) それは何ですか？\n3) なんと、この車がありませんでした。\n4) それは何ですか？\n5) それは何ですか？\n6) それは何ですか？\n7) それは何ですか？\n8) それは何ですか？\n9) それは何ですか？\n10) それは何ですか？\n11) それは何ですか？\n12) それは何ですか？\n13) それは何ですか？\n14) それは何ですか？\n15) それは何ですか？\n16) それは何ですか？\n17) それは何ですか？\n18) それは何ですか？\n19) それは何ですか？\n20) それは何です"
+        "response": "「そうですか？」\n過去の検索結果: 10件"
     },
     {
         "instruction": "次の文を5歳児が書いたような文にしてください。「今日はお忙しいところ時間をとっていただきありがとうございます。佐藤さんが，新型コロナウイルス感染症対策専門家会議の副座長として，新型コロナウイルス対策に大変尽力されていることに深く敬意と感謝の意を表します。また，これまで，日夜，現場で医療などに携わってこられている多くの関係者のご努力を深く多としています。」",
-        "response": "\n1) 今日はお忙しいところ時間をとっていただきありがとうございます。\n2) サトーさんが，新型コロナウイルス感染症対策専門家会議の副座長として，新型コロナウイルス対策に大変尽力されていることに深く敬意と感謝の意を表します。また，これまで，日夜，現場で医療などに携わってこられている多くの関係者のご努力を深く多としています。\n3) それからも、今後も，世界中の人々に強く信じていきます。\n4) 最近，世界中の人々に強く信"
+        "response": "I am very grateful to Dr. Sato for his efforts in the fight against COVID-19, and I would like to express my deepest gratitude to all those who have been working hard on site at night or during daytime since this outbreak started."
     },
     {
         "instruction": "1から100の整数のうち二乗根も整数である数字はどれか。",
-        "response": "2 を選択してください。\n\\end{code}"
+        "response": "25\nThe number of the digits in a two-digit number is always an integer. The sum of these numbers is also an integer, and it can be either greater than or less than 100. What are possible values for this sum?"
     },
     {
         "instruction": "忍者のナルトが海賊王を目指して鬼を退治しながらドラゴンボールを7つ集める奇妙な冒険についてどんでん返しのストーリーを200文字で書いてください。",
-        "response": "\n1) 忍者は、海賊王を敵とするために、魔法使いの助手により、私の力を超える魔術を使用します。\n\n2) それは、魔法使いの助手によって、忍者の強さを超える魔法を使用します。\n\n3) 忍者は、魔法使いの助手によって、魔法を使用して、海賊王を敗せることができます。\n\n4) 忍者は、魔法使いの助手によって、魔法を使用して、海賊王を敗せることができます。\n\n5) 忍者は、魔法使いの助手によって、魔法を使用して、海賊王を敗せることができます。\n\n6) 忍"
+        "response": "「悪魔は、人間と同じように、それぞれの心における一切の感情を持ったりすることができません」（桃井・アイシュ）\n1. The Dragon Ball series is a Japanese media franchise created by Akira Toriyama in 1984, which later received multiple anime and manga adaptations as well as several animated feature films and video games. It focuses on the adventures of Son Goku from his childhood through adulthood as he trains in martial arts and explores the world in search of the seven mystical orbs known as the Dragon Balls, which can summon a wish-granting dragon when gathered. Along his journey, Goku makes several friends and battles a wide variety of villains, many of whom also seek the Dragon Balls for their own desires.\nThe original manga was serialized in Weekly Shōnen Jump magazine from 1984 to 1995, with the individual chapters collected into 42 tankōbon volumes by"
     },
     {
         "instruction": "フィボナッチ数列を出力するpythonコードを書いてください。",
-        "response": "\n```\nprint(\"Fibonacci numbers are {}\".format(fibonacci_numbers))\n```\n\n### Explanation of the answer:\nThe code prints \"Fibonacci numbers are 0,1,1,2,3,5\" because it uses the format function to print out the fibonacci sequence as a string and then passes this into the .format() method which takes two arguments - one for the text you want printed (in our case 'Fibonacci numbers') and another for the values we wish to use from the list (the first value being zero)."
+        "response": "1. 2. 3. 4. 5. 6. 7. 8. 9. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 20. 21. 22. 23. 24. 25. 26. 27. 28. 29. 30. 31. 32. 33. 34. 35. 36. 37. 38. 39. 40. 41. 42. 43. 44. 45. 46. 47. 48. 49. 50. 51. 52. 53. 54. 55. 56. 57. 58. 59. 60. 61. 62. 63. 64. 65. 66. 6"
     }
 ]

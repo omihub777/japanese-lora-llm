@@ -81,12 +81,13 @@ class QualitativeTester:
         for testcase in tqdm.tqdm(self.testcases):
             test_prompt = self.prompt.generate_prompt(instruction=testcase["instruction"])
             response = self.generate(test_prompt, gen_hp=gen_hp)
-            responses.append(
-                {
+            result = {
                 "instruction":testcase["instruction"],
                 "response":response
                 }
-            )
+            print(result["instruction"])
+            print(result["response"])
+            responses.append(result)
         return responses
 
     @torch.no_grad()
@@ -125,15 +126,18 @@ def main(model_name:str, ds_name:str, testcase_path:str, gen_hp:Dict, is_save:bo
         save_dir = os.path.join("dialogues",ds_name,model_name.split("/")[-1])
         save_path = os.path.join(save_dir, testcase_path.split("/")[-1].split(".")[0]+"_result.json")
         if not os.path.exists(save_dir): os.makedirs(save_dir)
-        with open(save_path, "w") as fw:
-            fw.write("[\n")
-            for response in responses[:-1]:
-                json.dump(response, fw, ensure_ascii=False)
-                fw.write(",\n")
-            json.dump(responses[-1], fw, ensure_ascii=False)
-            fw.write(f"\n]")
+        # with open(save_path, "w") as fw:
+        #     fw.write("[\n")
+        #     for response in responses[:-1]:
+        #         json.dump(response, fw, ensure_ascii=False)
+        #         fw.write(",\n")
+        #     json.dump(responses[-1], fw, ensure_ascii=False)
+        #     fw.write(f"\n]")
+        with open(save_path, "w", encoding="utf-8") as fw:
+            json.dump(responses, fw, ensure_ascii=False)
         print("\n"+save_path)
-    print(responses)
+    for res in responses:
+        print(res)
             
 if __name__=="__main__":
     parser = argparse.ArgumentParser()
@@ -196,16 +200,16 @@ if __name__=="__main__":
         ]
     elif args.ds_name=="original":
         model_names = [ # original models
-            # "EleutherAI/pythia-2.8b-deduped",
+            "EleutherAI/pythia-2.8b-deduped",
             # "EleutherAI/pythia-6.9b-deduped",
-            # "EleutherAI/pythia-12b-deduped",
-            # "abeja/gpt-neox-japanese-2.7b",
-            # "retrieva-jp/t5-xl",
+            "EleutherAI/pythia-12b-deduped",
+            "abeja/gpt-neox-japanese-2.7b",
+            "retrieva-jp/t5-xl",
             "cyberagent/open-calm-7b",
-            # "rinna/japanese-gpt-neox-3.6b",
+            "rinna/japanese-gpt-neox-3.6b",
             # "togethercomputer/RedPajama-INCITE-Base-7B-v0.1",
             # "yahma/llama-7b-hf",
-            # "yahma/llama-13b-hf",
+            "yahma/llama-13b-hf",
         ]
         args.prompt_type="simple"
     else:

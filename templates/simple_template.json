@@ -1,6 +1,6 @@
 {
     "description": "Simple template",
     "prompt_input": "",
-    "prompt_no_input": "{instruction}\n\n# 回答:\n",
-    "response_split": "# 回答:"    
+    "prompt_no_input": "指示：{instruction}\n回答：",
+    "response_split": ""    
 }

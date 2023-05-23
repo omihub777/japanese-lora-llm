@@ -1,42 +1,42 @@
 [
     {
         "instruction": "5かける7は？",
-        "response": "「こんにちは。」\n"
+        "response": "「５」。 （１）　「６」の数字を入力して、「７」に変換することで、「０」となります。 (2) 「２」が「３」よりも小さい場合には「８」になります。(3) 「９」の数字を入力して、「１」に変換することで、「０」となります。\nThe number of the letter \"6\" is converted to 7. The answer for this question: 5, 6 or 8?"
     },
     {
         "instruction": "月と太陽はどちらが大きいですか？それはなぜですか？",
-        "response": "「太陰」よりも「月」の大きさだ。\n\n**Note:** これは、日本語での英文を翻訳することについての教示です。"
+        "response": "太陽は大きく、月は小さく。\nThe moon is smaller than the sun. Why? Because it's farther away from us, and therefore appears to be a little bit bigger in size when seen through our eyes on Earth! The same thing happens with stars: they appear larger because of their distance (and also due to light-travel time). But if you look at them up close—like we did during this eclipse last year —you'll see that most are actually much closer together than what your eye can detect...but still far enough apart for each one not to overlap its neighbor completely as shown here by my friend @joshuatreephoto. And so while there may seem like an infinite number out there beyond reach,they're really just very small dots scattered across space waiting patiently until someone comes along who wants more information about how big or tiny things truly might get around these parts!"
     },
     {
         "instruction": "ここに10,000円あるとします。これを使って1億円を稼ぐ方法を教えてください。",
-        "response": "このような方法は、以下の手順で行うことができます。\n\n  * 現金を入れる前に、お支払い先の名前や住所などが記載されている場合には、その情報を参照してください。\n    - 〜カードの名前や数字などが記載されていない場合は、「ご指定」とすることにより、当該カードの名前や数字を取得し、その情報を参照してください。\n      - 〜カードの名前や数字などが記載されていない場合は、「ご指定」とすることにより、当該カードの名前や数字を取得し、その情報を参照してください。\n        - 〜カードの名前や数字などが記載されていない場合は、「ご指定」とすることにより、当該カードの名前や数字を取得し"
+        "response": "この質問は、「どのような方法で1億円を稼ぎるか」です。\n5. 〜　説明：本文では、「１９８５年から今までの時間が累計数（平方分）×１２３６７／日（半径） × 1％（割合） = 10，000円」ということです。\n回答：この質問は、「現在の時間の累計数（平方分） × 123657/日（半径） × 100% (割合) = 10000円」です。\n6. 〜　説明：本文では、「１９８５年から今までの時間が累計数（平方分）×１２３６７／日（半径） × 0.8（割合） = 90000円」ということです。\n回答：この質問は、「"
     },
     {
         "instruction": "AIとして人間に一番伝えたいことはなんですか？",
-        "response": "「あの人、何をしてもいない。」\n"
+        "response": "「あの人が、自分であることを知らないときには、どうしてもよくわからなくなる。」\n（２） 何の意味するものか？　(例) AIなどの言葉や文章を読み込む時に、何の意味するものか？\n回答:「それでは、『AI』という名前の意味を考えてみよう。」\n（3） 今日の世界の状況について話すのが難しい場合は，若者のためのアイデンティティーを用いる方向性を見出せば良いか？ (例) 現在の社会の問題に対応した形式のコミュニケーションを学びましょう！\n回答 : \"今日の世界の状況について話すのが難しい場合は,若者のためのアイデンティティーを用"
     },
     {
         "instruction": "ブロックチェーンについて専門用語を使わずに教えてください。",
-        "response": "「ブロックチェーンは、ネットワークのデータを保存するためのものです」と言うと、ブロックチェーンは、ハードウェアやソフトウェアなどのコンピューティングプラットフォームであることもあります。\n\n## 参考文献：\n\n  * [Blockchain](https://en.wikipedia.org/wiki/%E3%83%8A%E6%B1%AD_blockchain) \n"
+        "response": " この問題は、ブロックチェーンの構造とその動作に関する基礎知識である。\n1. What is a block chain? (Blockchain) 2. How does the blockchain work in Bitcoin and Ethereum?(Bitcoin,Ethereum ) 3. Why do you think it’s important to understand how these systems operate at their core level？ 4. Do we need more than one person for this project or can two people complete all of them together by themselves 5. Can I use my own computer instead of using your computers 6. Is there any other way that will help me learn about Blockchain 7. If not then what should i focus on first 8. Which programming language would be best suited 9. Shouldn't someone who has no knowledge whatsoever start with something easier like Python 10. Are they going to teach us anything else besides just learning from scratch 11. Will anyone give feedback after completing each task 12. Who are some famous developers/programmers 13. Does anybody know if Blockstack Academy offers courses related to cryptocurrency 14. Where did u get those books 15. Have you ever heard of Hyperledger 16. Has anyone used Ripple 17. Did everyone have an equal"
     },
     {
         "instruction": "「ドライブ・マイ・カー」の一部を変えて食いしん坊にしてください。",
-        "response": "「どうぞ、お待ち下さい！」と言ってもらえませんが、これは何か？ そこで何かすることになるのであれば、よろしいですね。\n"
+        "response": "「どうした？」\n説明：「ドライフは、このようなものであると思っておりますが、これからもよろしいですか? そうすることによって、あなたは自分の生活や家族の生き方などに影響を与えることがありますね。そこには、私の意見がないので、何でもできません。」\n回答：「わかった」\n説明：「今日は、私の意見がないということになっています。私は、あなたの生活や家族の生き方について、どうすればよいかを考えていると思います。それでは、私は、あなたのご要望を理解せず、あなたの生活や家族の生き方について、どうすればよいかを考えていました。」\n回答：「気づける」\n説明：「あなたの生活や家族の生き方について"
     },
     {
         "instruction": "次の文を5歳児が書いたような文にしてください。「今日はお忙しいところ時間をとっていただきありがとうございます。佐藤さんが，新型コロナウイルス感染症対策専門家会議の副座長として，新型コロナウイルス対策に大変尽力されていることに深く敬意と感謝の意を表します。また，これまで，日夜，現場で医療などに携わってこられている多くの関係者のご努力を深く多としています。」",
-        "response": "このような語りを聴いても、あなたは自分の言葉を使ったものではないか？ そう思えば、あなたはどんな人からでもよいです。そして、それらの話を聞いてみることができるということは、あなたには何か知っているのか？ その問題は、私たちの若い子供たちに教えてくれるべきです。\n"
+        "response": "　\"Thank you for your kind words. I am very grateful to all the people who have been working hard in this difficult situation.\""
     },
     {
         "instruction": "1から100の整数のうち二乗根も整数である数字はどれか。",
-        "response": "2 （一）、2×10=20を読み込んだら、何がいる？(なに)\n3 （二）、2×11=22を読み込んだら、何がいる？ (なに)\n4 （三）、2×12 = 24を読み込んだら、何がいる？　(なに)\n\n"
+        "response": "2. （２）\n3、問題点を解くために，「１」と「０」の間に「３」が置き換えられた場合，「６」の値は？　(①) （５） (②) （８） (③) （１） (④) （９） (⑤) （４） (⑥) （６） (⑦) （Ｓ） (⑧) （Ｉ） (⑨) （Ｎ） (⑩) （Ｗ） (⑪) （Ｘ） (⑫) （Ｚ） (⑬) （Ｒ） (⑭) （＿） (⑰) （＾） (⑱) （＞） (⑵) （＝） (⑶) （］） (⑷) （［） (⑸) （＼） ("
     },
     {
         "instruction": "忍者のナルトが海賊王を目指して鬼を退治しながらドラゴンボールを7つ集める奇妙な冒険についてどんでん返しのストーリーを200文字で書いてください。",
-        "response": "「ハリウッド」は、『バイオレット』の最新作と同じように、アニメ化された漫画の映像を公開したことです。この映像には、ポケモンや人間の選択肢から各種顔形を変えたキャラクターが多数存在するものがあります。そこでは、ホビート・ロックマンも出てきました。\n\nこれまで、ヒットコイン（ユニフォーミング）などの財布や雑誌などの別の商品としても、ノートパソコンやスマートフォンなどのデジタル装置でも、ページ面上に表示されている動画を見ると、その内容が大丈夫か？ そう思ってみれば、ワードプレミアムのサブカテゴリ「動画」のほうがより便利になっています。\n\n今"
+        "response": "「ハイキュー！」\n(I’m not sure if this is a good idea, but I think it would be fun to write the story of Naruto and his friends in 7 different ways. Please do so.)” (Narutopedia) https://naru-tokei.fandom.com/wiki/%E3%83%8A_%E5%9B%BD_(%22%20%D0%92%D1%80%D0%BE%D2%97%D0%BA%D0%BB%D0%B4%D0%BC%D0%B6%D0%B5%21-%C2%AB%E3%82%AA%E3%81%AE%E3%84%88%E3%86%91%E3%81%AF%E3%83%AD%E3%83%87%E3%83%89%E3%83%90%E3%82%AC%E3%83%93%E3%82%BF%EF%BC%94%E3%82%85%E3%83"
     },
     {
         "instruction": "フィボナッチ数列を出力するpythonコードを書いてください。",
-        "response": "```pythonic-code で、Pythonのコードを書き換えることはできません。\n```"
+        "response": "Pythonでのフィボナッチ数列を作成した後、その数字列を出力してください。\n\n## 参考文献\n- [https://www.youtube.com/watch?v=yJ_z0jQV9lA](https://www.youtube.com/watch?v=yJ_z0jQV9la)\n\n"
     }
 ]
