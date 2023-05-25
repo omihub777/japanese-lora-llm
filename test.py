@@ -168,7 +168,8 @@ if __name__=="__main__":
             # "weights/EleutherAI_pythia_12b_deduped_alpaca_cleaned_ja_lora_int8_20230514_180727",
             # "weights/cyberagent_open_calm_7b_alpaca_cleaned_ja_lora_int8_20230517_111546",
             # "weights/rinna_japanese_gpt_neox_3.6b_alpaca_cleaned_ja_lora_int8_20230518_102931",
-            "weights/EleutherAI_pythia_2.8b_deduped_alpaca_cleaned_ja_lora_int8_20230519_022753",
+            # "weights/EleutherAI_pythia_2.8b_deduped_alpaca_cleaned_ja_lora_int8_20230519_022753",
+            "weights/cyberagent_open_calm_3b_alpaca_cleaned_ja_lora_int8_20230524_233925",
         ]
     elif args.ds_name=="dolly":
         model_names = [
@@ -182,7 +183,8 @@ if __name__=="__main__":
             # "weights/EleutherAI_pythia_12b_deduped_databricks_dolly_15k_ja_deepl_lora_int8_20230515_193036",
             # "weights/cyberagent_open_calm_7b_databricks_dolly_15k_ja_deepl_lora_int8_20230517_161809",
             # "weights/rinna_japanese_gpt_neox_3.6b_databricks_dolly_15k_ja_deepl_lora_int8_20230518_141905",
-            "weights/EleutherAI_pythia_2.8b_deduped_databricks_dolly_15k_ja_deepl_lora_int8_20230519_060836",
+            # "weights/EleutherAI_pythia_2.8b_deduped_databricks_dolly_15k_ja_deepl_lora_int8_20230519_060836",
+            "weights/cyberagent_open_calm_3b_databricks_dolly_15k_ja_deepl_lora_int8_20230525_023049",
         ]
     elif args.ds_name=="guanaco":
         model_names = [
@@ -196,20 +198,22 @@ if __name__=="__main__":
             # "weights/EleutherAI_pythia_12b_deduped_guanaco_non_chat_utf8_lora_int8_20230516_124120",
             # "weights/cyberagent_open_calm_7b_guanaco_non_chat_utf8_lora_int8_20230517_181437",
             # "weights/rinna_japanese_gpt_neox_3.6b_guanaco_non_chat_utf8_lora_int8_20230518_154418",
-            "weights/EleutherAI_pythia_2.8b_deduped_guanaco_non_chat_utf8_lora_int8_20230519_073323",
+            # "weights/EleutherAI_pythia_2.8b_deduped_guanaco_non_chat_utf8_lora_int8_20230519_073323",
+            "weights/cyberagent_open_calm_3b_guanaco_non_chat_utf8_lora_int8_20230525_033714",
         ]
     elif args.ds_name=="original":
         model_names = [ # original models
-            "EleutherAI/pythia-2.8b-deduped",
+            # "EleutherAI/pythia-2.8b-deduped",
             # "EleutherAI/pythia-6.9b-deduped",
-            "EleutherAI/pythia-12b-deduped",
-            "abeja/gpt-neox-japanese-2.7b",
-            "retrieva-jp/t5-xl",
-            "cyberagent/open-calm-7b",
-            "rinna/japanese-gpt-neox-3.6b",
+            # "EleutherAI/pythia-12b-deduped",
+            # "abeja/gpt-neox-japanese-2.7b",
+            # "retrieva-jp/t5-xl",
+            "cyberagent/open-calm-3b",
+            # "cyberagent/open-calm-7b",
+            # "rinna/japanese-gpt-neox-3.6b",
             # "togethercomputer/RedPajama-INCITE-Base-7B-v0.1",
             # "yahma/llama-7b-hf",
-            "yahma/llama-13b-hf",
+            # "yahma/llama-13b-hf",
         ]
         args.prompt_type="simple"
     else:

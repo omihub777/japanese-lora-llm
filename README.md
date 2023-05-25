@@ -41,6 +41,7 @@ python train.py --data_path "datasets/alpaca_cleaned_ja.json" --model_name "abej
 |Pythia-6.9B|:white_check_mark: |:white_check_mark:|:white_check_mark:| :white_check_mark: |
 |Pythia-12B|:white_check_mark: |:white_check_mark:|:white_check_mark:| :white_check_mark: |
 |GPT-NeoX-Japanese-2.7B|:white_check_mark: |:white_check_mark: |:white_check_mark: | :white_check_mark: |
+|OpenCALM-3B|:white_check_mark: |:white_check_mark: |:white_check_mark: | :white_check_mark: |
 |OpenCALM-7B|:white_check_mark: |:white_check_mark: |:white_check_mark: | :white_check_mark: |
 |T5-xl|:white_check_mark: |:white_check_mark: |:white_check_mark: | :white_check_mark: |
 |Japanese-GPT-1B (**)|:construction: |:construction: |:construction: | :construction: |

@@ -10,6 +10,7 @@ CAUSAL_LM_MODELS = [
     "decapoda-research/llama-7b-hf",
     "decapoda-research/llama-13b-hf",
     "rinna/japanese-gpt-1b",
+    "cyberagent/open-calm-3b",
     "cyberagent/open-calm-7b",
     "rinna/japanese-gpt-neox-3.6b",
 ]
@@ -27,5 +28,6 @@ LORA_TARGET_MODULES_DICT = {
     "togethercomputer/RedPajama-INCITE-Base-7B-v0.1": ["query_key_value", "dense"],
     "rinna/japanese-gpt-1b":["c_attn"],
     "rinna/japanese-gpt-neox-3.6b":["query_key_value", "dense"],
+    "cyberagent/open-calm-3b":["query_key_value", "dense"],
     "cyberagent/open-calm-7b":["query_key_value", "dense"],
 }
