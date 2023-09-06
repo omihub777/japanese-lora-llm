@@ -1,0 +1,6 @@
+{
+    "description": "Modified template originally used by Alpaca-LoRA for Llama2-Chat",
+    "prompt_input": "<s>[INST] <<SYS>>\nBelow is an instruction that describes a task, paired with an input that provides further context. Write a response that appropriately completes the request. You MUST speak in Japanese.\n<</SYS>>\n\n### Instruction:\n{instruction}\n\n### Input:\n{input}\n\n [/INST] ",
+    "prompt_no_input": "<s>[INST] <<SYS>>\nBelow is an instruction that describes a task. Write a response that appropriately completes the request. You MUST speak in Japanese.\n<</SYS>>\n\n### Instruction:\n{instruction}\n\n [/INST]",
+    "response_split": "[/INST]"
+}

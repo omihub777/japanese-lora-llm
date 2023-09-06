@@ -1,6 +1,6 @@
 {
     "description": "Simple template",
-    "prompt_input": "",
+    "prompt_input": "文脈をもとに問に回答してください。\n問：{instruction}\n文脈：{input}\n回答：",
     "prompt_no_input": "指示：{instruction}\n回答：",
     "response_split": ""    
 }

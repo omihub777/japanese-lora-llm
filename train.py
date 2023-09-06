@@ -33,7 +33,7 @@ from constants import (
 # 2. Add a `target_modules` to `LORA_TARGET_MODULES_DICT` to specify the modules to be decomposed.
 
 # Prepare model
-def prepare_model_tokenizer(model_name:str):
+def prepare_model_tokenizer(model_name:str, lora:bool=True, int8:bool=True):
     use_gradient_checkpointing = "mpt" not in model_name
     device_map = {"":0} if "mpt" in model_name else "auto"
     trust_remote_code = "mpt" in model_name
@@ -48,28 +48,32 @@ def prepare_model_tokenizer(model_name:str):
         tokenizer.pad_token_id = (0)
         # tokenizer.pad_token_id = (tokenizer.unk_token_id)
         # tokenizer.pad_token = tokenizer.unk_token
-    tokenizer.padding_side = "left"
+    if is_causal:
+        tokenizer.padding_side = "left"
+    else:
+        tokenizer.padding_side = "right"
 
     model_cls = AutoModelForCausalLM if is_causal else AutoModelForSeq2SeqLM
     model = model_cls.from_pretrained(
         model_name,
-        load_in_8bit=True,
+        load_in_8bit=int8,
         torch_dtype=torch.float16,
         device_map=device_map,
 
         trust_remote_code=trust_remote_code
     )
-
-    model = prepare_model_for_int8_training(model, use_gradient_checkpointing=use_gradient_checkpointing)
-    lora_config = LoraConfig(
-        r=16,
-        lora_alpha=16,
-        target_modules=LORA_TARGET_MODULES_DICT[model_name],
-        lora_dropout=0.05,
-        bias="none",
-        task_type = TaskType.CAUSAL_LM if is_causal else TaskType.SEQ_2_SEQ_LM,
-    )
-    model = get_peft_model(model, lora_config)
+    if int8:
+        model = prepare_model_for_int8_training(model, use_gradient_checkpointing=use_gradient_checkpointing)
+    if lora:
+        lora_config = LoraConfig(
+            r=16,
+            lora_alpha=16,
+            target_modules=LORA_TARGET_MODULES_DICT[model_name],
+            lora_dropout=0.05,
+            bias="none",
+            task_type = TaskType.CAUSAL_LM if is_causal else TaskType.SEQ_2_SEQ_LM,
+        )
+        model = get_peft_model(model, lora_config)
     return model, tokenizer
 
 
@@ -99,7 +103,10 @@ def train(
     gradient_accumulation_steps = batch_size // micro_batch_size
 
     is_multling = "guanaco" in data_path
-    prompter = AlpacaPromptTemplate(is_multling=is_multling)
+    if "Llama-2" in model_name:
+        prompter = AlpacaPromptTemplate(is_multling=is_multling, file_name="templates/alpaca_llama2_template.json")
+    else:
+        prompter = AlpacaPromptTemplate(is_multling=is_multling)
     wandb_run_name=f'{model_name.replace("/","_").replace("-","_")}_{data_path.split("/")[-1].split(".")[0].replace("-","_")}'
 
     if use_wandb:
@@ -208,6 +215,7 @@ if __name__ in "__main__":
     parser.add_argument("--num_epochs", type=float, default=3.0)
     parser.add_argument("--eval_steps", type=int, default=200)
     parser.add_argument("--val_set_size", type=int, default=2000)
+    parser.add_argument("--micro_batch_size", type=int, default=4)
 
     args = parser.parse_args()
 
@@ -215,6 +223,7 @@ if __name__ in "__main__":
         data_path=args.data_path,
         model_name=args.model_name, 
         batch_size=args.batch_size, 
+        micro_batch_size=args.micro_batch_size, 
         num_epochs=args.num_epochs,
         eval_steps=args.eval_steps,
         val_set_size=args.val_set_size,

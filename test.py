@@ -68,9 +68,15 @@ class QualitativeTester:
             self.testcases = json.load(f)
 
         if prompt_type=="simple":
-            self.prompt = SimplePromptTemplate()
+            if "Llama-2" in model_name:
+                self.prompt = SimplePromptTemplate(file_name="templates/simple_llama2_template.json")
+            else:
+                self.prompt = SimplePromptTemplate()
         elif prompt_type=="alpaca":
-            self.prompt = AlpacaPromptTemplate()
+            if "Llama-2" in model_name:
+                self.prompt = AlpacaPromptTemplate(file_name="templates/alpaca_llama2_template.json")
+            else:
+                self.prompt = AlpacaPromptTemplate()
         else:
             raise ValueError(f"No such template: {prompt_type}")
         self.model, self.tokenizer, self.is_causal = load_test_model(model_name=model_name)
@@ -79,7 +85,10 @@ class QualitativeTester:
     def test(self, gen_hp:Dict[str, Any])->List[Dict]:
         responses = []
         for testcase in tqdm.tqdm(self.testcases):
-            test_prompt = self.prompt.generate_prompt(instruction=testcase["instruction"])
+            if "input" in list(testcase.keys()):
+                test_prompt = self.prompt.generate_prompt(instruction=testcase["instruction"], input=testcase["input"])            
+            else:
+                test_prompt = self.prompt.generate_prompt(instruction=testcase["instruction"])
             response = self.generate(test_prompt, gen_hp=gen_hp)
             result = {
                 "instruction":testcase["instruction"],
@@ -107,7 +116,7 @@ class QualitativeTester:
             gen_text = self.tokenizer.decode(
                 gen_tokens[0], skip_special_tokens=True
             )
-        gen_text = gen_text[len(input_text):] if self.is_causal else gen_text
+        gen_text = gen_text[len(input_text)-1:] if self.is_causal else gen_text
         return gen_text
 
 
@@ -141,7 +150,7 @@ def main(model_name:str, ds_name:str, testcase_path:str, gen_hp:Dict, is_save:bo
             
 if __name__=="__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--ds_name", choices=["alpaca", "dolly", "guanaco" ,"original"], default="alpaca")
+    parser.add_argument("--ds_name", choices=["alpaca", "dolly", "guanaco" ,"original"], required=True)
     parser.add_argument("--prompt_type", choices=["alpaca", "simple"], default="alpaca")
     parser.add_argument("--testcase_path", default="testcases/instruction_testcases_ja.jsonl")
     parser.add_argument("--no_save", action="store_true")
@@ -169,7 +178,7 @@ if __name__=="__main__":
             # "weights/cyberagent_open_calm_7b_alpaca_cleaned_ja_lora_int8_20230517_111546",
             # "weights/rinna_japanese_gpt_neox_3.6b_alpaca_cleaned_ja_lora_int8_20230518_102931",
             # "weights/EleutherAI_pythia_2.8b_deduped_alpaca_cleaned_ja_lora_int8_20230519_022753",
-            "weights/cyberagent_open_calm_3b_alpaca_cleaned_ja_lora_int8_20230524_233925",
+            # "weights/cyberagent_open_calm_3b_alpaca_cleaned_ja_lora_int8_20230524_233925",
         ]
     elif args.ds_name=="dolly":
         model_names = [
@@ -184,7 +193,7 @@ if __name__=="__main__":
             # "weights/cyberagent_open_calm_7b_databricks_dolly_15k_ja_deepl_lora_int8_20230517_161809",
             # "weights/rinna_japanese_gpt_neox_3.6b_databricks_dolly_15k_ja_deepl_lora_int8_20230518_141905",
             # "weights/EleutherAI_pythia_2.8b_deduped_databricks_dolly_15k_ja_deepl_lora_int8_20230519_060836",
-            "weights/cyberagent_open_calm_3b_databricks_dolly_15k_ja_deepl_lora_int8_20230525_023049",
+            # "weights/cyberagent_open_calm_3b_databricks_dolly_15k_ja_deepl_lora_int8_20230525_023049",
         ]
     elif args.ds_name=="guanaco":
         model_names = [
@@ -199,7 +208,7 @@ if __name__=="__main__":
             # "weights/cyberagent_open_calm_7b_guanaco_non_chat_utf8_lora_int8_20230517_181437",
             # "weights/rinna_japanese_gpt_neox_3.6b_guanaco_non_chat_utf8_lora_int8_20230518_154418",
             # "weights/EleutherAI_pythia_2.8b_deduped_guanaco_non_chat_utf8_lora_int8_20230519_073323",
-            "weights/cyberagent_open_calm_3b_guanaco_non_chat_utf8_lora_int8_20230525_033714",
+            # "weights/cyberagent_open_calm_3b_guanaco_non_chat_utf8_lora_int8_20230525_033714",
         ]
     elif args.ds_name=="original":
         model_names = [ # original models
@@ -208,7 +217,9 @@ if __name__=="__main__":
             # "EleutherAI/pythia-12b-deduped",
             # "abeja/gpt-neox-japanese-2.7b",
             # "retrieva-jp/t5-xl",
-            "cyberagent/open-calm-3b",
+            # "meta-llama/Llama-2-7b-chat-hf",
+            "meta-llama/Llama-2-13b-chat-hf",
+            # "cyberagent/open-calm-3b",
             # "cyberagent/open-calm-7b",
             # "rinna/japanese-gpt-neox-3.6b",
             # "togethercomputer/RedPajama-INCITE-Base-7B-v0.1",

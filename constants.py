@@ -2,6 +2,8 @@ CAUSAL_LM_MODELS = [
     "mosaicml/mpt-7b",
     "yahma/llama-7b-hf",
     "yahma/llama-13b-hf",
+    "meta-llama/Llama-2-7b-chat-hf",
+    "meta-llama/Llama-2-13b-chat-hf",
     "EleutherAI/pythia-6.9b-deduped",
     "EleutherAI/pythia-12b-deduped",
     "EleutherAI/pythia-2.8b-deduped",
@@ -18,8 +20,12 @@ CAUSAL_LM_MODELS = [
 LORA_TARGET_MODULES_DICT = {
     "mosaicml/mpt-7b": ["Wqkv", "out_proj"], 
     "bigscience/mt0-xl": ["q","v","SelfAttention.o","EncDecAttention.o","SelfAttention.k", "EncDecAttention.k"], # ["k"] causes NoValueError
+    # "bigscience/mt0-xxl": ["q","v","SelfAttention.o","EncDecAttention.o","SelfAttention.k", "EncDecAttention.k"], # ["k"] causes NoValueError
+    "bigscience/mt0-xxl": ["q","v"], 
     "retrieva-jp/t5-xl": ["q","v","SelfAttention.o","EncDecAttention.o","SelfAttention.k", "EncDecAttention.k"],
     "yahma/llama-7b-hf": ["q_proj","k_proj", "v_proj", "o_proj"],
+    "meta-llama/Llama-2-7b-chat-hf": ["q_proj","k_proj", "v_proj", "o_proj"],
+    "meta-llama/Llama-2-13b-chat-hf": ["q_proj","k_proj", "v_proj", "o_proj"],
     "yahma/llama-13b-hf": ["q_proj","k_proj", "v_proj", "o_proj"],
     "EleutherAI/pythia-2.8b-deduped": ["query_key_value", "dense"],
     "EleutherAI/pythia-6.9b-deduped": ["query_key_value", "dense"],

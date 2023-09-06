@@ -2,12 +2,12 @@ import json
 from typing import Union
 
 class AlpacaPromptTemplate:
-    def __init__(self, is_multling:bool=False):
+    def __init__(self, is_multling:bool=False, file_name:str="templates/alpaca_template.json"):
         """
         Args:
             is_multling: True if a dataset consists of multiple languages.
         """
-        file_name = "templates/alpaca_template.json"
+
         with open(file_name) as fp:
             self.template = json.load(fp)
         if is_multling:
@@ -34,8 +34,7 @@ class AlpacaPromptTemplate:
         return res
 
 class SimplePromptTemplate:
-    def __init__(self):
-        file_name = "templates/simple_template.json"
+    def __init__(self, file_name:str = "templates/simple_template.json"):
         with open(file_name) as fp:
             self.template = json.load(fp)        
 
