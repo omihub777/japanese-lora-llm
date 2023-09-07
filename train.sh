@@ -3,6 +3,7 @@
 python train.py --data_path "datasets/alpaca_cleaned_ja.json" --model_name "meta-llama/Llama-2-7b-chat-hf"
 python train.py --data_path "datasets/alpaca_cleaned_ja.json" --model_name "meta-llama/Llama-2-13b-chat-hf"
 python test.py --ds_name original
+python test.py --ds_name alpaca
 # python train.py --data_path "datasets/msmarco_ja.json" --model_name "abeja/gpt-neox-japanese-2.7b"
 # python train.py --data_path "datasets/msmarco_ja.json" --model_name "cyberagent/open-calm-7b"
 # python train.py --data_path "datasets/msmarco_ja.json" --model_name "EleutherAI/pythia-12b-deduped"

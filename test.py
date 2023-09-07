@@ -167,6 +167,8 @@ if __name__=="__main__":
 
     if args.ds_name=="alpaca":
         model_names = [ 
+            "weights/meta_llama_Llama_2_7b_chat_hf_alpaca_cleaned_ja_lora_int8_20230906_143553",
+            "weights/meta_llama_Llama_2_13b_chat_hf_alpaca_cleaned_ja_lora_int8_20230906_200105",
             # "weights/abeja_gpt_neox_japanese_2.7b_alpaca_cleaned_ja_lora_int8_20230507_183231",
             # "weights/EleutherAI_pythia_6.9b_deduped_alpaca_cleaned_ja_lora_int8_20230507_120552",
             # "weights/togethercomputer_RedPajama_INCITE_Base_7B_v0.1_alpaca_cleaned_ja_lora_int8_20230507_222908",
