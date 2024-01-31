@@ -6,6 +6,7 @@ A collection of Japanese LoRA-tuned LLMs.
 * Python: 3.10.6
 * All models trained on a single NVIDIA GeForce RTX 4090 (24GB)
 
+<!--
 ## Quickstart
 
 ```
@@ -14,6 +15,7 @@ python app.py
 ```
 
 then, access to http://localhost:8080
+-->
 
 ## How to
 
