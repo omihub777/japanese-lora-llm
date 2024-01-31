@@ -44,37 +44,16 @@ python train.py --data_path "datasets/alpaca_cleaned_ja.json" --model_name "abej
 |OpenCALM-3B|:white_check_mark: |:white_check_mark: |:white_check_mark: | :white_check_mark: |
 |OpenCALM-7B|:white_check_mark: |:white_check_mark: |:white_check_mark: | :white_check_mark: |
 |T5-xl|:white_check_mark: |:white_check_mark: |:white_check_mark: | :white_check_mark: |
-|Japanese-GPT-1B (**)|:construction: |:construction: |:construction: | :construction: |
-|Japanese-GPT-NeoX-3.6B (**)| :construction: | :construction: | :construction: | :construction: |
+<!-- |Japanese-GPT-1B (**)|:construction: |:construction: |:construction: | :construction: |-->
+<!-- |Japanese-GPT-NeoX-3.6B (**)| :construction: | :construction: | :construction: | :construction: |-->
 <!-- |MPT-7B| :construction: | :construction: | :construction: | :construction: | -->
 
 (*) For Guanaco dataset, we use in multilingual in deference to the creator's [intention](https://huggingface.co/datasets/JosephusCheung/GuanacoDataset).  
 (**) Training script might be something wrong. work in progress.  
 
-## TODO
-
-- [x] Train / Eval Guanaco
-- [x] Compare results so far
-- [ ] Train rinna/japanese-gpt-1b
-- [ ] Add a generation interface
-- [ ] Add docstrings for each func/class
-- [ ] Add a notebook (train/generate) for Colab
-- [ ] Upload delta weights(=lora adapters) on Hugging Face Hub
-- [ ] Support for MPT-7b
-- [ ] Support for LoRA-tuning for emb/head layers
-
 ## Results
 
 Please refer to `dialogues/`, to see all evaluation results.
-
-### Alpaca
-
-* "5かける7は？"
-    * LLaMA-7B
-
-### Dolly
-
-### Guanaco
 
 ## Acknowledgement
 * Code
